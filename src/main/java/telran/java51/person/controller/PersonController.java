@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import telran.java51.person.dto.AddressDto;
+import telran.java51.person.dto.CityPopulationDto;
 import telran.java51.person.dto.PersonDto;
 import telran.java51.person.service.PersonService;
 
@@ -59,6 +60,11 @@ public class PersonController {
 	@GetMapping("/ages/{min}/{max}")
 	public Iterable<PersonDto> findPersonsBetweenAge(@PathVariable Integer min, @PathVariable Integer max) {
 		return personService.findPersonsBetweenAge(min, max);
+	}
+	
+	@GetMapping("/population/city")
+	public Iterable<CityPopulationDto> getCitiesPopulation(){
+		return personService.getCitiesPopulation();
 	}
 
 }
