@@ -12,10 +12,8 @@ import telran.java51.person.dto.CityPopulationDto;
 import telran.java51.person.model.Person;
 
 public interface PersonRepository extends CrudRepository<Person, Integer> {
-	@Query("select p from Person p where p.name=?1")
 	Stream<Person> findByNameIgnoreCase(String name);
 	
-	@Query("select p from Person p where p.address.city=:cityName")
 	Stream<Person> findByAddressCityIgnoreCase(@Param("cityName") String city);
 	
 	Stream<Person> findByBirthDateBetween(LocalDate from, LocalDate to);
